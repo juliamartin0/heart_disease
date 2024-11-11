@@ -38,7 +38,7 @@ The data used for this project needed cleaning and preparation to ensure it was 
 - Imputation Strategy:
   - For nominal variables (those with binary yes/no responses), I used a method called K-Nearest Neighbors (KNN) imputation. This method estimates the missing values based on the most similar (or “nearest”) individuals in the dataset, ensuring that the imputed values align with observed data patterns.
   - For categorical variables, I used mode imputation (replacing missing values with the most common value in the column). This approach worked well, as categorical variables in this dataset tended to have one dominant value.
-
+ 
 
 
 
