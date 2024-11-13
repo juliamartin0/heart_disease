@@ -55,6 +55,8 @@ The data used for this project needed cleaning and preparation to ensure it was 
 
  ![Cramer's V](https://github.com/juliamartin0/heart_disease/blob/main/newplot%20(6).png?raw=true) 
 
+## Exploratory Data Analysis
+
 
 
 
