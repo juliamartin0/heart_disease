@@ -75,10 +75,39 @@ For more visualizations and details, please refer to the attached code.
 
 ## Logistic Regression Model
 
+Once the data has been cleaned and prepared, and after getting a first look of how the variables act within each other and the target, I applied Logistic Regression to predict the likelihood of heart disease in the next 10 years. We chose Logistic Regression due to its simplicity, efficiency, and the fact that it provides easily interpretable results, making it a strong candidate for binary classification tasks like this one. 
 
+**Model Selection and Variable Testing**
+I experimented with different sets of variables to see how they influenced the model's performance, measured by the AUC (Area Under the Curve). Initially, I manually selected a set of variables that seemed intuitively important to predicting heart disease: 
 
+ - Model: TenYearCHD ~ age + cigsPerDay + sysBP + male + prevalentStroke + diabetes
+ - AUC: 0.725
+   
+While this model gave us a reasonable performance, I wanted to further optimize the selection of variables, so I tried the backward selection method with variable transformations (log, sqr, exp). This technique iteratively removes variables that don't significantly improve the model's performance, helping to simplify the model while maintaining accuracy.
 
+**Backward Selection Variables**
 
+ - Selected Variables: TenYearCHD ~ 'const', 'age', 'sysBP', 'diaBP', 'glucose', 'prop_missings', 'age_sqr', 'cigsPerDay_raiz4', 'diaBP_sqr', 'BMI_sqr', 'glucose_exp', 'male_1.0', 'currentSmoker_1.0', 'prevalentStroke_1.0', 'prevalentHyp_1.0'
+ - AUC: 0.73
+
+The performance of the backward selection model improved slightly to 0.73, but given that the AUC only increased by a small margin, it wasn’t worth adding all the extra complexity. In this case, a simpler model with fewer variables still provided comparable performance (see image below), which aligns with the principle of Occam’s Razor — simpler models are often preferred when the performance difference is minimal.
+
+![backward_selection](https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true) 
+
+**Interpreting the Model: Odds Ratios**
+After fitting the Logistic Regression model, we can interpret the coefficients as odds ratios, which provide insight into the relationship between the predictor variables and the likelihood of having heart disease in the next 10 years. Here's how we interpret the key variables from the simpler model:
+
+ - Prevalent Stroke: A person who has had a prior stroke is almost 3 times more likely to have heart disease in the next 10 years compared to someone without a prior stroke (Odds Ratio ≈ 3.0).
+ - Diabetes: Diabetic patients are 2.2 times more likely to develop heart disease compared to non-diabetic patients.
+ - Age: For each additional year of age, the odds of having a heart attack increase by 6%. This means that as people get older, their risk of heart disease in the next decade increases.
+ - Gender: Males have a 62% higher likelihood of heart disease in 10 years compared to females.
+
+These interpretations hold ceteris paribus (all other variables constant), meaning the effects are measured assuming that the other factors in the model do not change.
+
+**Handling the Unbalanced Dataset**
+Since our dataset is unbalanced (i.e., the number of positive cases for heart disease is much smaller than the negative cases), using a threshold of 0.5 for classification isn't ideal. In unbalanced datasets, the default threshold can lead to poor performance because it may classify too many negative cases, missing important positives.
+
+To address this, I used Youden’s Index, which suggests an optimal threshold for classification. This method maximizes the sum of sensitivity (true positive rate) and specificity (true negative rate), providing a better balance between the two. According to Youden’s threshold, we should use a threshold of 0.15, which means we classify a prediction as positive (heart disease) if the model's probability is greater than 0.15.
 
 
 
