@@ -58,14 +58,18 @@ The data used for this project needed cleaning and preparation to ensure it was 
 ## Exploratory Data Analysis
 In this section, we explore the relationships between different variables in the dataset. We use various visualizations to help uncover patterns and gain insights. The full detailed visualizations can be accessed in the code, but here are the main insights: 
 
-1. Age vs. 10-Year Heart Disease Risk
-2. Displot: Systolic Blood Pressure vs. 10-Year Heart Disease Risk
-3. Violin Plot: BMI vs. Hypertension
-4. Stacked Bar Plot: Hypertension vs. 10-Year Heart Disease Risk
+**1. Age vs. 10-Year Heart Disease Risk**
+ - To better understand this relationship, age was binned in 5-year intervals. The analysis revealed that individuals aged 45 to 65 years are the most at risk for heart disease.
+**2. Displot: Systolic Blood Pressure vs. 10-Year Heart Disease Risk**
+ - Patients with systolic blood pressure levels above 150 are more likely to develop heart disease within the next 10 years.
+**3. Violin Plot: BMI vs. Hypertension**
+ - The violin plot shows us that individuals with a BMI rate of 27 or higher are also more likely to have hypertension problems.
+**4. Stacked Bar Plot: Stroke vs. 10-Year Heart Disease Risk**
+ - Patients with previous strokes are more likely to suffer from heart conditions in ten years. 
 
 | ![Age_target](https://github.com/juliamartin0/heart_disease/blob/main/age_target.png?raw=true) | ![sysBP_target](https://github.com/juliamartin0/heart_disease/blob/main/sysBP_target.png?raw=true) |
 |----------------------------|----------------------------|
-| ![bmi_hyp](https://github.com/juliamartin0/heart_disease/blob/main/bmi_hyp.png?raw=true) | ![prevalentHyp_target](https://github.com/juliamartin0/heart_disease/blob/main/prevalentHyp_target.png?raw=true) |
+| ![bmi_hyp](https://github.com/juliamartin0/heart_disease/blob/main/bmi_hyp.png?raw=true) | ![prevalentStroke_target](https://github.com/juliamartin0/heart_disease/blob/main/stroke_target.png?raw=true) |
 
 
 
