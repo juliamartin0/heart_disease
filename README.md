@@ -94,12 +94,15 @@ While this model gave us a reasonable performance, I wanted to further optimize 
 
 The performance of the backward selection model improved slightly to 0.73, but given that the AUC only increased by a small margin, it wasn’t worth adding all the extra complexity. In this case, a simpler model with fewer variables still provided comparable performance (see image below), which aligns with the principle of Occam’s Razor — simpler models are often preferred when the performance difference is minimal.
 
-<table style="width:100%; text-align:center;">
-  <tr>
-    <td><img src="https://github.com/juliamartin0/heart_disease/blob/main/models_manual.png?raw=true" alt="manual models" width="400"/></td>
-    <td><img src="https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true" alt="backward selection" width="400"/></td>
-  </tr>
-</table>
+<p align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/juliamartin0/heart_disease/blob/main/models_manual.png?raw=true" alt="manual models" width="400"/></td>
+      <td><img src="https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true" alt="backward selection" width="400"/></td>
+    </tr>
+  </table>
+</p>
+
 
 **Interpreting the Model: Odds Ratios**
 After fitting the Logistic Regression model, we can interpret the coefficients as odds ratios, which provide insight into the relationship between the predictor variables and the likelihood of having heart disease in the next 10 years. Here's how we interpret the key variables from the simpler model:
