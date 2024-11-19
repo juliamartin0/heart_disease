@@ -83,7 +83,9 @@ I experimented with different sets of variables to see how they influenced the m
  - Model: TenYearCHD ~ age + cigsPerDay + sysBP + male + prevalentStroke + diabetes
  - AUC: 0.725
    
-While this model gave us a reasonable performance, I wanted to further optimize the selection of variables, so I tried the backward selection method with variable transformations (log, sqr, exp). This technique iteratively removes variables that don't significantly improve the model's performance, helping to simplify the model while maintaining accuracy.
+In this manual model, I chose a set of variables based on prior knowledge and intuition. It’s worth noting that all the variables in this model were statistically significant, meaning that, based on the model’s results, there is strong evidence to suggest that each of these variables has a meaningful relationship with the outcome variable (heart disease in the next 10 years). In other words, each variable has an influence on the prediction, and their effects are unlikely to have occurred by chance.
+
+While this model gave us a reasonable performance, I wanted to further optimize the selection of variables, so I tried the backwards selection method. This technique iteratively removes variables that don't significantly improve the model's performance, helping to simplify the model while maintaining accuracy.
 
 **Backward Selection Variables**
 
@@ -92,7 +94,7 @@ While this model gave us a reasonable performance, I wanted to further optimize 
 
 The performance of the backward selection model improved slightly to 0.73, but given that the AUC only increased by a small margin, it wasn’t worth adding all the extra complexity. In this case, a simpler model with fewer variables still provided comparable performance (see image below), which aligns with the principle of Occam’s Razor — simpler models are often preferred when the performance difference is minimal.
 
-![backward_selection](https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true) 
+| ![manual_models](https://github.com/juliamartin0/heart_disease/blob/main/models_manual.png?raw=true) | ![backward_selection](https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true) |
 
 **Interpreting the Model: Odds Ratios**
 After fitting the Logistic Regression model, we can interpret the coefficients as odds ratios, which provide insight into the relationship between the predictor variables and the likelihood of having heart disease in the next 10 years. Here's how we interpret the key variables from the simpler model:
