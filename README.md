@@ -81,7 +81,7 @@ Once the data has been cleaned and prepared, and after getting a first look of h
 I experimented with different sets of variables to see how they influenced the model's performance, measured by the AUC (Area Under the Curve). Initially, I manually selected a set of variables that seemed intuitively important to predicting heart disease: 
 
  - Model: TenYearCHD ~ age + cigsPerDay + sysBP + male + prevalentStroke + diabetes (model 4 image below)
- - AUC: 0.725
+ - AUC: 0.726
 
 <p align="center">
   <img src="https://github.com/juliamartin0/heart_disease/blob/main/models_manual.png?raw=true" alt="manual models"/>
@@ -105,17 +105,21 @@ The performance of the backward selection model improved slightly to 0.73, but g
 **Interpreting the Model: Odds Ratios**
 After fitting the Logistic Regression model, we can interpret the coefficients as odds ratios, which provide insight into the relationship between the predictor variables and the likelihood of having heart disease in the next 10 years. Here's how we interpret the key variables from the simpler model:
 
- - Prevalent Stroke: A person who has had a prior stroke is almost 3 times more likely to have heart disease in the next 10 years compared to someone without a prior stroke (Odds Ratio ≈ 3.0).
- - Diabetes: Diabetic patients are 2.2 times more likely to develop heart disease compared to non-diabetic patients.
+ - Prevalent Stroke: A person who has had a prior stroke is almost **3 times more likely** to have heart disease in the next 10 years compared to someone without a prior stroke (Odds Ratio ≈ 3.0).
+ - Diabetes: **Diabetic patients are 2.2 times more likely** to develop heart disease compared to non-diabetic patients.
  - Age: For each additional year of age, the odds of having a heart attack increase by 6%. This means that as people get older, their risk of heart disease in the next decade increases.
  - Gender: Males have a 62% higher likelihood of heart disease in 10 years compared to females.
 
 These interpretations hold ceteris paribus (all other variables constant), meaning the effects are measured assuming that the other factors in the model do not change.
 
 **Handling the Unbalanced Dataset**
-Since our dataset is unbalanced (i.e., the number of positive cases for heart disease is much smaller than the negative cases), using a threshold of 0.5 for classification isn't ideal. In unbalanced datasets, the default threshold can lead to poor performance because it may classify too many negative cases, missing important positives.
+Since our dataset is unbalanced (the number of positive cases for heart disease is much smaller than the negative cases), using a threshold of 0.5 for classification isn't ideal. In unbalanced datasets, the default threshold can lead to poor performance because it may classify too many negative cases, missing important positives. To address this, I used Youden’s Index, which suggests an optimal threshold for classification. This method maximizes the sum of sensitivity (true positive rate) and specificity (true negative rate), providing a better balance between the two. According to Youden’s threshold, we should use a threshold of 0.15, which means we classify a prediction as positive (heart disease) if the model's probability is greater than 0.15.
 
-To address this, I used Youden’s Index, which suggests an optimal threshold for classification. This method maximizes the sum of sensitivity (true positive rate) and specificity (true negative rate), providing a better balance between the two. According to Youden’s threshold, we should use a threshold of 0.15, which means we classify a prediction as positive (heart disease) if the model's probability is greater than 0.15.
+<p align="center">
+  <img src="https://github.com/juliamartin0/heart_disease/blob/main/youden.png?raw=true" alt="youden"/>
+</p>
+
+
 
 
 
