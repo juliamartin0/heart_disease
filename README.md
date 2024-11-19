@@ -80,9 +80,11 @@ Once the data has been cleaned and prepared, and after getting a first look of h
 **Model Selection and Variable Testing**
 I experimented with different sets of variables to see how they influenced the model's performance, measured by the AUC (Area Under the Curve). Initially, I manually selected a set of variables that seemed intuitively important to predicting heart disease: 
 
- - Model: TenYearCHD ~ age + cigsPerDay + sysBP + male + prevalentStroke + diabetes
+ - Model: TenYearCHD ~ age + cigsPerDay + sysBP + male + prevalentStroke + diabetes (model 4 image below)
  - AUC: 0.725
-   
+
+![manual_models](https://github.com/juliamartin0/heart_disease/blob/main/models_manual.png?raw=true) 
+
 In this manual model, I chose a set of variables based on prior knowledge and intuition. It’s worth noting that all the variables in this model were statistically significant, meaning that, based on the model’s results, there is strong evidence to suggest that each of these variables has a meaningful relationship with the outcome variable (heart disease in the next 10 years). In other words, each variable has an influence on the prediction, and their effects are unlikely to have occurred by chance.
 
 While this model gave us a reasonable performance, I wanted to further optimize the selection of variables, so I tried the backwards selection method. This technique iteratively removes variables that don't significantly improve the model's performance, helping to simplify the model while maintaining accuracy.
@@ -92,13 +94,9 @@ While this model gave us a reasonable performance, I wanted to further optimize 
  - Selected Variables: TenYearCHD ~ 'const', 'age', 'sysBP', 'diaBP', 'glucose', 'prop_missings', 'age_sqr', 'cigsPerDay_raiz4', 'diaBP_sqr', 'BMI_sqr', 'glucose_exp', 'male_1.0', 'currentSmoker_1.0', 'prevalentStroke_1.0', 'prevalentHyp_1.0'
  - AUC: 0.73
 
-The performance of the backward selection model improved slightly to 0.73, but given that the AUC only increased by a small margin, it wasn’t worth adding all the extra complexity. In this case, a simpler model with fewer variables still provided comparable performance (see image below), which aligns with the principle of Occam’s Razor — simpler models are often preferred when the performance difference is minimal.
+The performance of the backward selection model improved slightly to 0.73, but given that the AUC only increased by a small margin, it wasn’t worth adding all the extra complexity (we can see that after 6 variables the AUC score barely increases). In this case, a simpler model with fewer variables still provided comparable performance (see image below), which aligns with the principle of Occam’s Razor — simpler models are often preferred when the performance difference is minimal.
 
-<div style="display: flex; justify-content: center; gap: 20px;">
-  <img src="https://github.com/juliamartin0/heart_disease/blob/main/models_manual.png?raw=true" alt="manual models" width="400"/>
-  <img src="https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true" alt="backward selection" width="400"/>
-</div>
-
+![backward_selection](https://github.com/juliamartin0/heart_disease/blob/main/backward_method.png?raw=true) 
 
 **Interpreting the Model: Odds Ratios**
 After fitting the Logistic Regression model, we can interpret the coefficients as odds ratios, which provide insight into the relationship between the predictor variables and the likelihood of having heart disease in the next 10 years. Here's how we interpret the key variables from the simpler model:
