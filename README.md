@@ -38,7 +38,7 @@ The data used for this project needed cleaning and preparation to ensure it was 
 ![Missing Data Matrix](https://github.com/juliamartin0/heart_disease/blob/main/missing_matrix.png?raw=true)
 
 - **Imputation Strategy:**
-  - For nominal variables (those with binary yes/no responses), I used a method called **K-Nearest Neighbors (KNN) imputation**. This method estimates the missing values based on the most similar (or “nearest”) individuals in the dataset, ensuring that the imputed values align with observed data patterns.
+  - For nominal variables (those with binary yes/no responses), I used **K-Nearest Neighbors (KNN) imputation**. This method estimates the missing values based on the most similar (or “nearest”) individuals in the dataset, ensuring that the imputed values align with observed data patterns.
   - For categorical variables, I used **mode imputation** (replacing missing values with the most common value in the column). This approach worked well, as categorical variables in this dataset tended to have one dominant value.
  
 **3. Correlation Analysis:** High correlation between independent variables can lead to multicollinearity, where the predictor variables are highly related to each other. If the correlation is too high, one or more of the correlated variables may need to be removed to improve the model's performance and reduce overfitting. During the analysis, we observed several pairs of variables with high correlation, which provided important insights:
@@ -56,9 +56,10 @@ The data used for this project needed cleaning and preparation to ensure it was 
  ![Cramer's V](https://github.com/juliamartin0/heart_disease/blob/main/newplot%20(6).png?raw=true) 
 
 ## Exploratory Data Analysis
+In this section, we explore the relationships between different variables in the dataset. We use various visualizations to help uncover patterns and gain insights. The full detailed visualizations can be accessed in the code, but here are the main insights: 
 
-
-
+![Age_target](https://github.com/juliamartin0/heart_disease/blob/main/age_target.png?raw=true)  ![prevalentHyp_target](https://github.com/juliamartin0/heart_disease/blob/main/prevalentHyp_target.png?raw=true) 
+![bmi_hyp](https://github.com/juliamartin0/heart_disease/blob/main/bmi_hyp.png?raw=true)  ![sysBP_target](https://github.com/juliamartin0/heart_disease/blob/main/sysBP_target.png?raw=true) 
 
 
 
