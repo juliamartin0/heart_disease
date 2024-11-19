@@ -56,7 +56,7 @@ The data used for this project needed cleaning and preparation to ensure it was 
  ![Cramer's V](https://github.com/juliamartin0/heart_disease/blob/main/newplot%20(6).png?raw=true) 
 
 ## Exploratory Data Analysis
-In this section, we explore the relationships between different variables in the dataset. We use various visualizations to help uncover patterns and gain insights. The full detailed visualizations can be accessed in the code, but here are the main insights: 
+In this section, we explore the relationships between different variables in the dataset. We use Pandas, Seaborn, and Matplotlib libraries for various visualizations to help uncover patterns and gain insights. Below are the key visualizations:
 
 **1. Age vs. 10-Year Heart Disease Risk:** To better understand this relationship, age was binned in 5-year intervals. The analysis revealed that individuals aged 45 to 65 years are the most at risk for heart disease.
 
@@ -70,6 +70,10 @@ In this section, we explore the relationships between different variables in the
 | ![Age_target](https://github.com/juliamartin0/heart_disease/blob/main/age_target.png?raw=true) | ![sysBP_target](https://github.com/juliamartin0/heart_disease/blob/main/sysBP_target.png?raw=true) |
 |----------------------------|----------------------------|
 | ![bmi_hyp](https://github.com/juliamartin0/heart_disease/blob/main/bmi_hyp.png?raw=true) | ![prevalentStroke_target](https://github.com/juliamartin0/heart_disease/blob/main/stroke_target.png?raw=true) |
+
+For more visualizations and details, please refer to the attached code.
+
+## Logistic Regression Model
 
 
 
