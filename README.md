@@ -58,8 +58,11 @@ The data used for this project needed cleaning and preparation to ensure it was 
 ## Exploratory Data Analysis
 In this section, we explore the relationships between different variables in the dataset. We use various visualizations to help uncover patterns and gain insights. The full detailed visualizations can be accessed in the code, but here are the main insights: 
 
-![Age_target](https://github.com/juliamartin0/heart_disease/blob/main/age_target.png?raw=true)  ![prevalentHyp_target](https://github.com/juliamartin0/heart_disease/blob/main/prevalentHyp_target.png?raw=true) 
-![bmi_hyp](https://github.com/juliamartin0/heart_disease/blob/main/bmi_hyp.png?raw=true)  ![sysBP_target](https://github.com/juliamartin0/heart_disease/blob/main/sysBP_target.png?raw=true) 
+| ![Age_target](https://github.com/juliamartin0/heart_disease/blob/main/age_target.png?raw=true) | ![prevalentHyp_target](https://github.com/juliamartin0/heart_disease/blob/main/prevalentHyp_target.png?raw=true) |
+|----------------------------|----------------------------|
+| ![bmi_hyp](https://github.com/juliamartin0/heart_disease/blob/main/bmi_hyp.png?raw=true) | ![sysBP_target](https://github.com/juliamartin0/heart_disease/blob/main/sysBP_target.png?raw=true) |
+
+
 
 
 
