@@ -78,7 +78,7 @@ For more visualizations and details, please refer to the attached code.
 Once the data has been cleaned and prepared, and after getting a first look of how the variables act within each other and the target, I applied Logistic Regression to predict the likelihood of heart disease in the next 10 years. We chose Logistic Regression due to its simplicity, efficiency, and the fact that it provides easily interpretable results, making it a strong candidate for binary classification tasks like this one. 
 
 **Model Selection and Variable Testing**
-I experimented with different sets of variables to see how they influenced the model's performance, measured by the AUC (Area Under the Curve). Initially, I manually selected a set of variables that seemed intuitively important to predicting heart disease: 
+I experimented with different sets of variables to see how they influenced the model's performance, measured by the AUC (Area Under the Curve). Initially, I manually selected a set of variables that seemed intuitively important to predicting heart disease and eliminated those that were highly correlated: 
 
  - Model: TenYearCHD ~ age + cigsPerDay + sysBP + male + prevalentStroke + diabetes (model 4 image below)
  - AUC: 0.726
@@ -112,17 +112,46 @@ After fitting the Logistic Regression model, we can interpret the coefficients a
 
 These interpretations hold ceteris paribus (all other variables constant), meaning the effects are measured assuming that the other factors in the model do not change.
 
-**Handling the Unbalanced Dataset**
-Since our dataset is unbalanced (the number of positive cases for heart disease is much smaller than the negative cases), using a threshold of 0.5 for classification isn't ideal. In unbalanced datasets, the default threshold can lead to poor performance because it may classify too many negative cases, missing important positives. To address this, I used Youden’s Index, which suggests an optimal threshold for classification. This method maximizes the sum of sensitivity (true positive rate) and specificity (true negative rate), providing a better balance between the two. According to Youden’s threshold, we should use a threshold of 0.15, which means we classify a prediction as positive (heart disease) if the model's probability is greater than 0.15.
+## Handling the Unbalanced Dataset
+
+The dataset for predicting heart disease is highly imbalanced, with 85% of individuals not having heart disease and only 15% diagnosed with it. This imbalance can bias the model towards predicting the majority class (no heart disease), leading to a high accuracy but poor performance in detecting heart disease cases.
+
+### Challenge with Default Classification Threshold
+The default classification threshold of 0.5 often doesn’t work well in imbalanced datasets. A threshold of 0.5 would predict most people as not having heart disease, but this approach misses many true positive cases (heart disease cases), potentially leading to undetected health risks. While the model would have high accuracy, its ability to correctly identify heart disease cases (sensitivity or recall) would be poor.
+
+### Solution Approach
+To address the imbalance and improve model performance, two techniques were applied:
+
+**SMOTE (Synthetic Minority Over-sampling Technique)**
+SMOTE was used to generate synthetic examples of the minority class (heart disease cases), making the dataset more balanced. This allows the model to learn better patterns for predicting heart disease, improving its ability to detect heart disease cases.
+
+**Threshold Adjustment for Optimal Sensitivity and Specificity**
+I adjusted the classification threshold based on the goal of maximizing true positive detection while minimizing false positives that lead to unnecessary medical follow-ups. Initially, I tried using Youden’s Index, which suggested a threshold of 0.15, but this resulted in too many false positives—the model predicted almost everyone as having heart disease.
 
 <p align="center">
   <img src="https://github.com/juliamartin0/heart_disease/blob/main/youden.png?raw=true" alt="youden"/>
 </p>
 
+The threshold of 0.41 was chosen after evaluating different thresholds and measuring the F1-score. It struck the best balance between detecting heart disease cases (true positives) and avoiding excessive false positives (wrongly classifying healthy individuals). This balance is crucial because:
+
+ - Maximizing detection of true positives ensures that people at risk of heart disease are identified and receive timely care.
+ - Minimizing false positives avoids unnecessary medical tests, reducing healthcare costs and unnecessary follow-ups.
+
+This updated model, with threshold adjustment and SMOTE to balance the classes, shows a significant improvement in terms of recall for the positive class (heart disease) without sacrificing too much in precision. The key achievements are:
+
+ - A high recall of 0.80 for the positive class (heart disease), indicating that the model is identifying many more positive cases.
+ - An F1-score of 0.70 for the positive class, which strikes a good balance, meaning the model is not sacrificing much precision for the high recall.
+ - While accuracy remains relatively low (66%), this is expected because improving recall and F1-score often requires focusing on detecting more positive cases (even at the cost of precision). This trade-off is typical when the primary objective is to reduce false negatives.
 
 
 
+## Conclusion
 
+The model performs well because it effectively identifies both positive and negative cases of heart disease, without significantly compromising precision. Its main goal is to correctly classify as many people as possible, including those at risk for heart disease (true positives) and those without it (true negatives). Therefore, this approach is highly valid for ensuring both early intervention and resource efficiency in a real-world setting..
+
+When validated with unseen data, the model consistently performs with a standard deviation of ±1.18% across different test sets. This indicates that the **model's performance is stable and reliable**, showing minimal variability (less than 1.2%) across different data splits. In other words, the model is **robust** and **not overfitting**, meaning it's not just memorizing specific data, but generalizing well to new, unseen cases.
+
+In real-world applications like healthcare, where the cost of missing a heart disease case (false negative) can have serious consequences, the goal is to strike a balance between correctly identifying positive cases (heart disease) and negative cases (no heart disease). A good F1 score is key to achieving this balance. By prioritizing F1 score, the model aims to maximize the identification of both true positives and true negatives, minimizing false negatives (which could lead to undiagnosed patients) while avoiding an overload of false positives, which could result in unnecessary follow-ups and treatments. This approach ensures that the model is both accurate and efficient in detecting those at risk, while not overwhelming healthcare resources with false alarms.
 
 
 
