@@ -139,7 +139,11 @@ With SMOTE and the 0.41 threshold, the model's performance improved significantl
 - The **F1-score** for the positive class is 0.70, balancing recall and precision.
 - **Accuracy** is 66%, which is lower than before, but this is expected when the focus is on improving recall and reducing false negatives, even at the expense of some precision.
 
-Before applying SMOTE and adjusting the threshold (see image below), the model had a high number of false negatives (missed heart disease cases) and low recall. After applying SMOTE and adjusting the threshold to 0.41, the model’s recall improved, catching more true positive cases, but the false positives also increased slightly, as expected when focusing on recall.
+Before applying SMOTE and adjusting the threshold (see image below), the model had a very high percentage of false negatives (92,2% missed heart disease cases) and very low recall (7%). This meant that the model was failing to identify a significant portion of patients who were at risk of heart disease, which could have dire consequences in real-world applications, such as undiagnosed patients potentially facing heart attacks or other serious complications. 
+
+After applying SMOTE and adjusting the threshold to 0.41, the model's recall improved dramatically from 7% to 80%, significantly reducing false negatives from 92.2% to 20%. This means the model now detects a much larger proportion of heart disease cases, which is crucial in healthcare to prevent undiagnosed patients from facing serious risks or death. Along with this, the F1 score also rose from 13% to 70%, striking a better balance between precision and recall. While false positives increased slightly, the trade-off was valuable in capturing more true positives (actual heart disease cases).
+
+This model now provides a reliable tool for healthcare providers to identify at-risk individuals, ensuring timely intervention while minimizing the risks associated with false negatives, ultimately improving patient outcomes and saving lives.
 
 <p align="center">
   <img src="https://github.com/juliamartin0/heart_disease/blob/main/confmatrix1.png?raw=true" alt="Before SMOTE and Threshold Adjustment" width="45%" />
