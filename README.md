@@ -141,7 +141,10 @@ With SMOTE and the 0.41 threshold, the model's performance improved significantl
 
 Before applying SMOTE and adjusting the threshold (see image below), the model had a high number of false negatives (missed heart disease cases) and low recall. After applying SMOTE and adjusting the threshold to 0.41, the model’s recall improved, catching more true positive cases, but the false positives also increased slightly, as expected when focusing on recall.
 
-
+<p align="center">
+  <img src="https://github.com/juliamartin0/heart_disease/blob/main/confmatrix1.png?raw=true" alt="Before SMOTE and Threshold Adjustment" width="45%" />
+  <img src="https://github.com/juliamartin0/heart_disease/blob/main/confmatrix_2.png?raw=true" alt="After SMOTE and Threshold Adjustment" width="45%" />
+</p>
 
 ## Conclusion
 The model is effective because it identifies both positive and negative cases of heart disease, with a focus on minimizing false negatives (missed heart disease cases). The F1-score is the key metric, as it balances precision and recall, ensuring that the model is accurate while also reducing the risk of missing heart disease cases.
