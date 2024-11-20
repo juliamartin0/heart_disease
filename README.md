@@ -151,18 +151,10 @@ While false positives increased (from 1.4% to 24%), this trade-off is worthwhile
 After applying SMOTE to address the class imbalance, the dataset increased from 4,238 rows to 7,188, as new synthetic examples of heart disease cases were generated. This expansion allowed the model to better learn patterns associated with heart disease. Despite the increase in data, we validated the model's performance across different test sets, and the results remained stable, with a standard deviation of ±1.18%. This indicates that the model is robust, consistently performing well, and not overfitting to the synthetic data, ensuring that it generalizes effectively to real-world scenarios.
 
 ## Conclusion
-The model is effective because it identifies both positive and negative cases of heart disease, with a focus on minimizing false negatives (missed heart disease cases). The F1-score is the key metric, as it balances precision and recall, ensuring that the model is accurate while also reducing the risk of missing heart disease cases.
+This project aimed to develop a model for predicting heart disease risk over the next 10 years. The primary goal was to maximize both true positive and true negative cases, ensuring that the model correctly identifies individuals at risk of heart disease (true positives) while also accurately identifying those not at risk (true negatives). At the same time, we aimed to minimize false negatives (individuals at risk who are missed by the model), as it’s more critical to identify as many at-risk individuals as possible to ensure timely medical intervention.
 
-- **Stable performance:** The model performs consistently across different test sets with a standard deviation of ±1.18%, indicating it is **robust and not overfitting**.
-- In real-world healthcare applications, where missing a heart disease case can have serious consequences, the goal is to strike a balance. The model’s F1-score ensures the identification of both heart disease cases and healthy individuals without overwhelming the healthcare system with unnecessary follow-ups.
-- By optimizing the model for recall (minimizing false negatives) and achieving a good F1-score, the model strikes a practical balance between detecting those at risk and reducing unnecessary interventions, making it a reliable tool for real-world heart disease prediction.
+After applying SMOTE and adjusting the classification threshold, the model significantly improved its ability to detect true heart disease cases, with recall increasing from 7% to 80%. Although there was an increase in false positives, this trade-off was considered acceptable because it prioritized early detection and patient safety, ensuring that those who are truly at risk are not overlooked.
 
-This project developed a model to predict heart disease risk over the next 10 years. Through careful analysis, including calculating the odds ratios for key factors (like age, BMI, and smoking status), we identified which variables had the strongest links to heart disease risk.
+It's important to note that depending on the context or specific objectives, others might choose to minimize false positives in order to reduce unnecessary medical costs. However, in this case, the priority was ensuring that as many high-risk individuals as possible were identified, even if it meant a slight increase in false positives.
 
-By addressing data imbalances with SMOTE and adjusting key model settings, we were able to significantly improve the model's performance.
-
- - **Better detection:** The model now identifies 80% of actual heart disease cases, up from just 7%, reducing the risk of missing at-risk individuals.
- - **Improved balance:** While focusing on identifying as many true cases as possible, and reducing false negatives; the model also aims to reduce unnecessary medical costs by minimizing false positives—avoiding the overdiagnosis of individuals who are unlikely to develop heart disease in the next 10 years.
-   
-In practical terms, this model helps healthcare providers detect at-risk individuals earlier, leading to more timely interventions and better patient outcomes, ultimately saving lives and reducing unnecessary healthcare expenses.
-
+Ultimately, this model provides a valuable tool for healthcare providers, helping to identify those in need of intervention, improve patient outcomes, and ultimately save lives, all while balancing the goal of minimizing both false positives and false negatives.
